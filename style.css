@@ -1,0 +1,54 @@
+*{
+    font-family: degular, sans-serif;
+}
+img {
+    height: auto;
+    width: 100%;
+}
+body{
+    margin: 0;
+}
+p{
+    font-family: degular-display, sans-serif;
+    color: #333333
+}
+header{
+    background-color: #333333;
+    padding-top: .25vw;
+}
+header div{
+    width: 75px;
+    height: 75px;
+    padding: 2px;
+    border-radius: 50%;
+    background-color: #333333;
+    position: fixed;
+    left: 45vw;
+    top: 0px;
+    z-index: 2;
+}
+header div > img{
+    display: block;
+    height: 80%;
+    width: auto;
+    margin: 0.5vw;
+}
+nav{
+    color: #E5E3E3;
+    position: fixed;
+    background-color: #333333;
+    width: 100%;
+}
+nav ol a {
+    color: #E5E3E3;
+    text-decoration: none;
+    padding: 0 35px 0 35px;
+    text-align: right;
+    font-size: 1.5vw;
+}
+nav ol{
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5vw;
+}
