@@ -1,5 +1,5 @@
 *{
-    font-family: degular, sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 img {
     height: auto;
@@ -7,19 +7,18 @@ img {
 }
 body{
     margin: 0;
+    background-color: #E5E3E3;
 }
 p{
-    font-family: degular-display, sans-serif;
-    color: #333333
+    font-weight: 300;
+    color: #333333;
+    padding:0 2vw;
 }
 header{
-    background-color: #333333;
-    padding-top: .25vw;
-}
+    background-color: #333333;}
 header div{
     width: 75px;
     height: 75px;
-    padding: 2px;
     border-radius: 50%;
     background-color: #333333;
     position: fixed;
@@ -28,16 +27,17 @@ header div{
     z-index: 2;
 }
 header div > img{
-    display: block;
-    height: 80%;
+    position: fixed;
+    height: 55px;
     width: auto;
-    margin: 0.5vw;
+    margin: 10px;
 }
 nav{
     color: #E5E3E3;
     position: fixed;
     background-color: #333333;
     width: 100%;
+    top: 0;
 }
 nav ol a {
     color: #E5E3E3;
@@ -45,10 +45,57 @@ nav ol a {
     padding: 0 35px 0 35px;
     text-align: right;
     font-size: 1.5vw;
+    font-weight: 300;
 }
 nav ol{
     list-style-type: none;
     display: flex;
     justify-content: flex-end;
     padding-right: 5vw;
+}
+main{
+    padding-top: 6vw;
+    margin:auto;
+    max-width: 90vw;
+}
+
+main > h1{
+    color: #333333;
+    font-weight: 500;
+}
+section{
+    /* margin: 8vw 0vw 0 0vw; */
+    max-width: 1280px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    align-items: space-around ;
+} 
+article{
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border-radius: 6px 6px 0 0; 
+    font-weight: 500;
+    margin: auto;
+}
+article > h1 {
+    text-align: center;
+    margin:1vw;
+}
+article > div:last-child{
+    display: flex;
+}
+.line{
+    width: 100px;
+    height: 2px;
+    background-color: #333333;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pic{
+    height:200px;
+    width: 100%;
+    background-color: pink;
+    border-radius: 6px 6px 0 0; 
 }
