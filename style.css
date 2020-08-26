@@ -12,19 +12,21 @@ body{
 p{
     font-weight: 300;
     color: #333333;
-    padding:0 2vw;
+    padding:0 1vw;
+    font-size: 15px;
 }
 header{
     background-color: #333333;}
+
 header div{
     width: 75px;
     height: 75px;
     border-radius: 50%;
     background-color: #333333;
     position: fixed;
-    left: 45vw;
+    left: 47.5vw;
     top: 0px;
-    z-index: 2;
+    z-index: 3;
 }
 header div > img{
     position: fixed;
@@ -38,6 +40,7 @@ nav{
     background-color: #333333;
     width: 100%;
     top: 0;
+    z-index: 2;
 }
 nav ol a {
     color: #E5E3E3;
@@ -54,9 +57,10 @@ nav ol{
     padding-right: 5vw;
 }
 main{
-    padding-top: 6vw;
+    padding-top: 8vw;
     margin:auto;
     max-width: 90vw;
+    text-align: center;
 }
 
 main > h1{
@@ -64,7 +68,6 @@ main > h1{
     font-weight: 500;
 }
 section{
-    /* margin: 8vw 0vw 0 0vw; */
     max-width: 1280px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -76,21 +79,9 @@ article{
     background-color: white;
     border-radius: 6px 6px 0 0; 
     font-weight: 500;
-    margin: auto;
-}
-article > h1 {
-    text-align: center;
-    margin:1vw;
-}
-article > div:last-child{
-    display: flex;
-}
-.line{
-    width: 100px;
-    height: 2px;
-    background-color: #333333;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 2vw auto auto auto;
+    position: relative;
+    top: 0;
 }
 
 .pic{
@@ -98,4 +89,63 @@ article > div:last-child{
     width: 100%;
     background-color: pink;
     border-radius: 6px 6px 0 0; 
+}
+.sold{
+    position: relative;
+    background-color: #CC7C6E;
+    top: 20px;
+}
+.sold h3{
+    color: white;
+    padding: 5px;
+    margin: 0;
+}
+
+.alcohol{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-image: url(images/alcohol.svg);
+    top: 120px;
+    left: 10px;
+}
+
+article > p {
+    height: 60px;
+}
+article > h1 {
+    text-align: center;
+    margin:1vw;
+    font-size: 20px;
+}
+article > div:last-child{
+    display: flex;
+    margin: 0 1vw 0 1vw;
+    justify-content: space-between;
+}
+.vegan{
+    font-size: 20px;
+    color: #6ECCA3;
+    line-height: 28px;
+}
+.prices{
+    display: flex;
+}
+.prices >h3 {
+    margin:0;
+    font-size: 18px;
+    color: #CC7C6E;
+    text-decoration-line: line-through;
+}
+.prices > h2{
+    margin:0;
+    font-size: 28px;
+    margin-left: 5px;
+}
+.line{
+    width: 100px;
+    height: 2px;
+    background-color: #333333;
+    margin-left: auto;
+    margin-right: auto;
 }
