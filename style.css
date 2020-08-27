@@ -253,3 +253,7 @@ article > div:last-child{
     top: 75px;
     animation: ease-in-out 1s;
 }
+.span{
+    grid-column:span 2;
+
+}
