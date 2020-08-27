@@ -16,3 +16,8 @@ function open_menu(){
         menu_open = false;
     }
 }
+
+document.querySelector('article').addEventListener('click',e=>{
+    const article = e.target.parentElement
+    article.classList.toggle('span')
+}) 
