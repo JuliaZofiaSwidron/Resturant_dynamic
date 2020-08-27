@@ -19,5 +19,6 @@ function open_menu(){
 
 document.querySelector('article').addEventListener('click',e=>{
     const article = e.target.parentElement
-    article.classList.toggle('span')
+    article.classList.toggle('span');
+    article.querySelector("description").textContent = "Longer text about the food i don't remember how it goes i just know it needs to be longer but also don't remember how long so i'm just writing very boring and meaningless stuff lalala tututut hahah lorem ipsum something something"
 }) 
