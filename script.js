@@ -21,6 +21,7 @@ function open_menu(){
 
 //opening and closing the menu
 document.querySelectorAll('article').forEach(article=>{
+    console.log("open this shit")
     article.addEventListener('click', e=>{
         article.classList.toggle('span'); 
     })
@@ -35,6 +36,45 @@ fetch("https://kea-alt-del.dk/t5/api/productlist")
 })
 .then(function(data){
     console.log(data)
+    dataRecived(data)
 })
 
 //loop through products
+function dataRecived(meals){
+    meals.forEach(addMeal)
+}
+
+function addMeal(meal){
+    //link and clone the template
+    const template = document.querySelector("#meal").content;
+    const clone = template.cloneNode(true);
+
+    //populate the copy
+    clone.querySelector("h1").textContent = meal.name;
+    clone.querySelector(".description").textContent = meal.shortdescription;
+
+    if (meal.vegetarian == true){
+        clone.querySelector(".vegan").textContent = "Vegan";
+    }else{
+        clone.querySelector(".vegan").textContent = " ";
+    }
+
+    if (meal.soldout == true){
+        clone.querySelector(".sold").classList.add("visible");
+    }
+
+    if (meal.alcohol != 0){
+        clone.querySelector(".alcohol").classList.add("visible");
+    }
+    
+    if (meal.discount == 0){
+         clone.querySelector(".price").textContent = meal.price;
+    }else{
+        let discount = meal.price * meal.discount * 0.1;
+        clone.querySelector(".regular_price").textContent = meal.price;
+        clone.querySelector(".price").textContent = discount;
+    }
+
+    //append the copy
+    document.querySelector("section").appendChild(clone);
+}
