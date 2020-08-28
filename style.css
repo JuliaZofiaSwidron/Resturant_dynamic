@@ -25,6 +25,7 @@ header{
     background-color: #333333;
     position: fixed;
     left: 47.5vw;
+    /* align-self: center; */
     top: 0px;
     z-index: 3;
 }
@@ -86,6 +87,7 @@ article{
     position: relative;
     top: 0;
     transition: all 1s ease-in-out;
+    cursor: pointer;
 }
 article.span {
     width:100%;

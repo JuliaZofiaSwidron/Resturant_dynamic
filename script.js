@@ -1,7 +1,9 @@
-let burger = document.querySelector(".burger");
-let navig = document.querySelector("#navig");
-let logo = document.querySelector(".logo")
+const burger = document.querySelector(".burger");
+const navig = document.querySelector("#navig");
+const logo = document.querySelector(".logo")
 let menu_open = false;
+
+//burger menu
 
 burger.addEventListener("click", open_menu);
 
@@ -17,7 +19,22 @@ function open_menu(){
     }
 }
 
-document.querySelector('article').addEventListener('click',e=>{
-    const article = e.target.parentElement
-    article.classList.toggle('span'); 
-}
+//opening and closing the menu
+document.querySelectorAll('article').forEach(article=>{
+    article.addEventListener('click', e=>{
+        article.classList.toggle('span'); 
+    })
+})
+
+
+//fetch data
+fetch("https://kea-alt-del.dk/t5/api/productlist")
+.then(function (response) {
+    console.log("data was fetched");
+    return response.json();
+})
+.then(function(data){
+    console.log(data)
+})
+
+//loop through products
