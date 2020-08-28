@@ -141,9 +141,9 @@ article > div > h1 {
 
 
 
-/*Something doesn't work here*/
+/*right side of the thing*/
 .right{
-    height: auto;
+    height: 180px;
     display: flex;
     flex-flow: column;
 }
@@ -271,17 +271,41 @@ article.span > .right > .description{
 
 
 /*Animations*/
-.open{
-    display: block;
-    animation: ease-in-out 1s;
-}
+
 .move{
     top: 75px;
     animation: ease-in-out 1s;
 }
-.span {
-    grid-column:span 2;
 
+.grid--big-columns {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+.meal--expanded {
+    grid-column: span 2;
+  }  
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.4s forwards;
+    animation-delay: 0.3s;
+  }
+
+  
+.span {
+    transform-origin: right;
+    grid-column:span 2;
 }
 .visible{
     display: block;

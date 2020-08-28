@@ -19,13 +19,18 @@ function open_menu(){
     }
 }
 
-//opening and closing the menu
-document.querySelectorAll('article').forEach(article=>{
-    console.log("open this shit")
-    article.addEventListener('click', e=>{
-        article.classList.toggle('span'); 
-    })
-})
+// document.querySelector("article").addEventListener("click", expandMeal);
+// function expandMeal(){
+
+// }
+
+//opening and closing the meal detailed description
+// document.querySelectorAll('article').forEach(article=>{
+//     console.log("open this shit")
+//     article.addEventListener('click', e=>{
+//         article.classList.toggle('span'); 
+//     })
+// })
 
 
 //fetch data
@@ -50,6 +55,7 @@ function addMeal(meal){
     const clone = template.cloneNode(true);
 
     //populate the copy
+    clone.querySelector("article").addEventListener("click",expandMeal);
     clone.querySelector("h1").textContent = meal.name;
     clone.querySelector(".description").textContent = meal.shortdescription;
 
@@ -66,7 +72,7 @@ function addMeal(meal){
     if (meal.alcohol != 0){
         clone.querySelector(".alcohol").classList.add("visible");
     }
-    
+
     if (meal.discount == 0){
          clone.querySelector(".price").textContent = meal.price;
     }else{
@@ -78,3 +84,43 @@ function addMeal(meal){
     //append the copy
     document.querySelector("section").appendChild(clone);
 }
+
+this works
+
+
+function expandMeal(){
+    // document.querySelector('article').classList.add("span");
+    document.querySelectorAll('article').forEach(article=>{
+             console.log("open this shit")
+             article.addEventListener('click', e=>{
+             article.classList.toggle('span'); 
+           })
+        })
+}
+
+
+
+
+
+// //pento
+// grid.addEventListener("click", ev => {
+//     let target = ev.target;
+//     while (target.tagName !== "HTML") {
+//       if (target.classList.contains("card")) {
+//         target.classList.toggle("card--expanded");
+//         return;
+//       }
+//       target = target.parentElement;
+//     }
+//   });
+  
+//   Promise.all([...Array(10).keys()].map(addCard)).then(() => {
+//     animateCSSGrid.wrapGrid(grid, {
+//       duration: 350,
+//       stagger: 10,
+//       onStart: elements =>
+//         console.log(`started animation for ${elements.length} elements`),
+//       onEnd: elements =>
+//         console.log(`finished animation for ${elements.length} elements`)
+//     });
+//   });
