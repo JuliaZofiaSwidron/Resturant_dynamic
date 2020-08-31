@@ -1,29 +1,33 @@
-
 /*Basics*/
-*{
+* {
     font-family: 'Raleway', sans-serif;
     box-sizing: border-box;
 }
+
 img {
     max-height: auto;
     max-width: auto;
     object-fit: contain;
 }
-body{
+
+body {
     margin: 0;
     background-color: #E5E3E3;
 }
-p{
+
+p {
     font-weight: 300;
     color: #333333;
-    padding:0 1vw;
+    padding: 0 1vw;
     font-size: 15px;
 }
-/*header and navigation*/
-header{
-    background-color: #333333;}
 
-.logo{
+/*header and navigation*/
+header {
+    background-color: #333333;
+}
+
+.logo {
     width: 75px;
     height: 75px;
     border-radius: 50%;
@@ -34,13 +38,15 @@ header{
     top: 0px;
     z-index: 3;
 }
-.logo > img{
+
+.logo>img {
     position: fixed;
     height: 55px;
     width: auto;
     margin: 10px;
 }
-nav{
+
+nav {
     color: #E5E3E3;
     position: fixed;
     background-color: #333333;
@@ -48,6 +54,7 @@ nav{
     top: 0;
     z-index: 2;
 }
+
 nav ol a {
     color: #E5E3E3;
     text-decoration: none;
@@ -56,10 +63,12 @@ nav ol a {
     font-size: 15px;
     font-weight: 300;
 }
-a:hover{
+
+a:hover {
     text-decoration: underline;
 }
-nav ol{
+
+nav ol {
     list-style-type: none;
     display: flex;
     justify-content: flex-end;
@@ -70,32 +79,35 @@ nav ol{
 
 
 /*big layout*/
-main{
+main {
     padding-top: 8vw;
-    margin:auto;
+    margin: auto;
     max-width: 90vw;
     text-align: center;
 }
-
-main > h1{
+main > div {
+    margin-top: 6vw;
+} 
+main>h1 {
     color: #333333;
     font-weight: 500;
 }
-section{
+
+section {
     max-width: 1280px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    align-items: space-around ;
-} 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: space-around;
+}
 
 
 
 /* Article styling*/
-article{
-    width:300px;
+article {
+    width: 300px;
     height: 400px;
     background-color: white;
-    border-radius: 6px 6px 0 0; 
+    border-radius: 6px 6px 0 0;
     font-weight: 500;
     margin: 2vw auto auto auto;
     position: relative;
@@ -105,40 +117,43 @@ article{
     cursor: pointer;
 }
 
-.pic{
-    height:200px;
+.pic {
+    height: 200px;
     width: 100%;
     background-color: pink;
     border-radius: 6px 6px 0 0;
-    overflow: hidden; 
-}
-.sold{
-    display: none;
+    overflow: hidden;
     position: relative;
+}
+
+.sold {
+    display: none;
+    position: absolute;
     background-color: #CC7C6E;
-    /* top: 20px; */
+    top: 20px;
     width: 100%;
 }
-.sold h3{
+
+.sold h3 {
     color: white;
     padding: 5px;
     margin: 0;
 }
 
-.alcohol{
+.alcohol {
     display: none;
-    position: relative;
+    position: absolute;
     width: 30px;
     height: 30px;
     background-image: url(images/alcohol.svg);
     top: 120px;
-    background-repeat:no-repeat ;
+    background-repeat: no-repeat;
     left: 10px;
 }
 
-article > div > h1 {
+article>div>h1 {
     text-align: center;
-    margin:1vw;
+    margin: 1vw;
     font-size: 20px;
 }
 
@@ -146,12 +161,13 @@ article > div > h1 {
 
 
 /*right side of the thing*/
-.right{
+.right {
     height: 180px;
     display: flex;
     flex-flow: column;
 }
-.abc{
+
+.abc {
     display: flex;
     bottom: 10px;
     padding: 0 20px;
@@ -159,33 +175,38 @@ article > div > h1 {
     align-items: flex-end;
     margin-top: auto;
 }
-.vegan{
+
+.vegan {
     font-size: 25px;
     color: #6ECCA3;
     line-height: 28px;
 }
-.alergens{
+
+.alergens {
     display: none;
     margin: 10px;
     text-align: left;
 }
 
-.prices{
+.prices {
     display: flex;
     margin-top: auto;
 }
-.prices >h3 {
-    margin:3px;
+
+.prices>h3 {
+    margin: 3px;
     font-size: 20px;
     color: #CC7C6E;
     text-decoration-line: line-through;
 }
-.prices > h2{
-    margin:0;
+
+.prices>h2 {
+    margin: 0;
     font-size: 30px;
     margin-left: 5px;
 }
-.line{
+
+.line {
     width: 100px;
     height: 2px;
     background-color: #333333;
@@ -198,13 +219,13 @@ article > div > h1 {
 
 /* Article opened*/
 article.span {
-    width:100%;
-    display:grid;
+    width: 100%;
+    display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-article.span > .pic {
-    height:100%;
+article.span>.pic {
+    height: 100%;
 }
 
 /* article.span > .pic > img{
@@ -213,47 +234,54 @@ article.span > .pic {
     width: auto;
 } */
 
-article.span > .pic >.alcohol{
+article.span>.pic>.alcohol {
     top: 300px;
 }
 
-article.span > .right{
+article.span>.right {
     padding-top: 20px;
     display: flex;
     flex-flow: column;
     height: 380px;
 }
-article.span > .right > .alergens{
+
+article.span>.right>.alergens {
     display: block;
 }
-article.span > .right > .description{
+
+article.span>.right>.description {
     height: 200px;
 }
 
 
 
 /*Mobile and tablet view*/
-@media only screen and (max-width: 1000px){
-    main{
+@media only screen and (max-width: 1000px) {
+    main {
         margin-top: 4vw;
     }
-    nav{
-        z-index:1;
+
+    nav {
+        z-index: 1;
         display: none;
 
     }
-    nav ol{
+
+    nav ol {
         display: block;
         padding-bottom: 30px;
     }
-    nav ol li{
+
+    nav ol li {
         text-align: center;
     }
-    header > div{
-        left:43vw;
+
+    header>div {
+        left: 43vw;
         /* top: 75px; */
     }
-    .burg{
+
+    .burg {
         background-color: #333333;
         position: fixed;
         width: 100%;
@@ -262,14 +290,16 @@ article.span > .right > .description{
         left: 0;
         border-radius: 0;
     }
-    .burger{
+
+    .burger {
         width: 100%;
         position: fixed;
-        left:30px;
+        left: 30px;
         top: 10px;
         z-index: 4;
     }
-    .burger div{
+
+    .burger div {
         width: 30px;
         height: 2px;
         background-color: #E5E3E3;
@@ -283,7 +313,7 @@ article.span > .right > .description{
 
 /*Animations*/
 
-.move{
+.move {
     top: 75px;
     animation: ease-in-out 1s;
 }
@@ -292,6 +322,6 @@ article.span > .right > .description{
     grid-column: span 2;
 }
 
-.visible{
+.visible {
     display: block;
 }

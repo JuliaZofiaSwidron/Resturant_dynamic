@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Static Restaurant</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;600&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <img src="images/logo.png" alt="abstract logo of te restaurant, white curly shapes on a black background">
-            </div>
-            <div class="burg">
-            </div>
-            <div class="burger">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-            </div>
-            
-            
-            <nav id="navig">
-                <ol>
-                    <li><a href="">Menu</a></li>
-                    <li><a href="">Contact</a></li>
-                    <li><a href="">Reservations</a></li>
-                </ol>
-            </nav>
-        </header>
-        <main>
-            <h1>Main</h1>
-            <section>
-                <!-- <article class="">
+
+<head>
+    <title>Static Restaurant</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="abstract logo of te restaurant, white curly shapes on a black background">
+        </div>
+        <div class="burg">
+        </div>
+        <div class="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+
+        <nav id="navig">
+            <ol>
+                <li><a href="">Menu</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Reservations</a></li>
+            </ol>
+        </nav>
+    </header>
+    <main>
+        <div id="starter"><h1>Starters</h1><section class="starter"></section></div>
+        <div id="main"><h1>Main</h1><section class="main"></section></div>
+        <div id="dessert"><h1>Desserts</h1><section class="dessert"></section></div>
+        <div id="drink"><h1>Drinks</h1><section class="drink"></section></div>
+        <div id="side"><h1>Side Dishes</h1><section class="side"></section></div>
+
+        
+            <!-- <article class="">
                     <div class="pic">
                         <div class="sold"><h3>Sold Out</h3></div>
                         <div class="alcohol"></div>
@@ -47,32 +54,35 @@
                             <h2>79,-</h2></div>
                     </div>
                 </div>
-                </article> -->   
-            </section>    
-             <template id="meal">
-                 <article class="">
-                    <div class="pic">
-                        <div class="sold"><h3>Sold Out</h3></div>
-                        <div class="alcohol"></div>
-                        <img src="Yahoo.png">
+                </article> -->
+        
+        <template id="meal">
+            <article class="">
+                <div class="pic">
+                    <div class="sold">
+                        <h3>Sold Out</h3>
                     </div>
-                    <div class="right">
-                        <h1>Cheese Pizza</h1>
-                        <div class="line"></div>
-                        <p class="description">Our delicious pizza with homemade sauce served with...</p>
-                        <p class="alergens">Allergens : lactose</p>
-                        <div class="abc">
-                            <div class="vegan"></div>
-                            <div class="prices">
-                                <h3 class="regular_price"></h3>
-                                <h2 class="price"></h2>
-                            </div>
+                    <div class="alcohol"></div>
+                    <!-- <img src="Yahoo.png"> -->
+                </div>
+                <div class="right">
+                    <h1>Cheese Pizza</h1>
+                    <div class="line"></div>
+                    <p class="description">Our delicious pizza with homemade sauce served with...</p>
+                    <p class="alergens">Allergens : lactose</p>
+                    <div class="abc">
+                        <div class="vegan"></div>
+                        <div class="prices">
+                            <h3 class="regular_price"></h3>
+                            <h2 class="price"></h2>
                         </div>
                     </div>
-                </article>
-            </template>
-                   
-        </main>
-    </body>
-    <script src="script.js"></script>
+                </div>
+            </article>
+        </template>
+
+    </main>
+</body>
+<script src="script.js"></script>
+
 </html>
