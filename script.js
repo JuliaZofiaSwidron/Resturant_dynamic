@@ -85,9 +85,9 @@ function addMeal(meal){
     document.querySelector("section").appendChild(clone);
 }
 
-this works
 
 
+// this works
 function expandMeal(){
     // document.querySelector('article').classList.add("span");
     document.querySelectorAll('article').forEach(article=>{
@@ -98,29 +98,3 @@ function expandMeal(){
         })
 }
 
-
-
-
-
-// //pento
-// grid.addEventListener("click", ev => {
-//     let target = ev.target;
-//     while (target.tagName !== "HTML") {
-//       if (target.classList.contains("card")) {
-//         target.classList.toggle("card--expanded");
-//         return;
-//       }
-//       target = target.parentElement;
-//     }
-//   });
-  
-//   Promise.all([...Array(10).keys()].map(addCard)).then(() => {
-//     animateCSSGrid.wrapGrid(grid, {
-//       duration: 350,
-//       stagger: 10,
-//       onStart: elements =>
-//         console.log(`started animation for ${elements.length} elements`),
-//       onEnd: elements =>
-//         console.log(`finished animation for ${elements.length} elements`)
-//     });
-//   });

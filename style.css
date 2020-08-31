@@ -2,10 +2,12 @@
 /*Basics*/
 *{
     font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
 }
 img {
-    height: auto;
-    width: 100%;
+    max-height: auto;
+    max-width: auto;
+    object-fit: contain;
 }
 body{
     margin: 0;
@@ -99,6 +101,7 @@ article{
     position: relative;
     top: 0;
     transition: all 1s ease-in-out;
+    transform-origin: left;
     cursor: pointer;
 }
 
@@ -106,14 +109,15 @@ article{
     height:200px;
     width: 100%;
     background-color: pink;
-    border-radius: 6px 6px 0 0; 
+    border-radius: 6px 6px 0 0;
+    overflow: hidden; 
 }
 .sold{
     display: none;
     position: relative;
     background-color: #CC7C6E;
-    top: 20px;
-    width: 260px;
+    /* top: 20px; */
+    width: 100%;
 }
 .sold h3{
     color: white;
@@ -203,6 +207,12 @@ article.span > .pic {
     height:100%;
 }
 
+/* article.span > .pic > img{
+    display: block;
+    max-height: 100%;
+    width: auto;
+} */
+
 article.span > .pic >.alcohol{
     top: 300px;
 }
@@ -211,6 +221,7 @@ article.span > .right{
     padding-top: 20px;
     display: flex;
     flex-flow: column;
+    height: 380px;
 }
 article.span > .right > .alergens{
     display: block;
@@ -277,36 +288,10 @@ article.span > .right > .description{
     animation: ease-in-out 1s;
 }
 
-.grid--big-columns {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  }
-
-.meal--expanded {
-    grid-column: span 2;
-  }  
-
-@keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: scale(0);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 0.4s forwards;
-    animation-delay: 0.3s;
-  }
-
-  
 .span {
-    transform-origin: right;
-    grid-column:span 2;
+    grid-column: span 2;
 }
+
 .visible{
     display: block;
 }
