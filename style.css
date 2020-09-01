@@ -3,6 +3,9 @@
     font-family: 'Raleway', sans-serif;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 img {
     max-height: auto;
@@ -24,7 +27,7 @@ p {
 
 /*header and navigation*/
 header {
-    background-color: #333333;
+    margin-right: 5vw;
 }
 
 .logo {
@@ -47,18 +50,23 @@ header {
 }
 
 nav {
+    display: flex;
     color: #E5E3E3;
     position: fixed;
     background-color: #333333;
     width: 100%;
+    height: 50px;
     top: 0;
     z-index: 2;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 4vw;
 }
 
-nav ol a {
-    color: #E5E3E3;
+nav a {
     text-decoration: none;
-    padding: 0 35px 0 35px;
+    color: #E5E3E3;
+    padding: 1vw;
     text-align: right;
     font-size: 1.25vw;
     font-weight: 300;
@@ -68,31 +76,22 @@ a:hover {
     text-decoration: underline;
 }
 
-nav ol {
-    list-style-type: none;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 5vw;
-}
-.showft{
-    opacity: 100%;
-}
 #showfilt{
     padding-top: 3vw;
     text-align: right;
     color:#333333;
-    font-size: 1.25vw;
+    font-size: 1vw;
     text-decoration: underline;
+    cursor: pointer;
 }
 #filters{
-    display:flex;
-    opacity: 0;
+    display:none;
     justify-content: flex-end;
     width: 100%;
 }
 #filters >button{
     width: 10vw;
-    font-size: 1.25vw;
+    font-size: 1vw;
     padding: .2vw;
     margin-left: 1vw;
     border-radius: 5vw 5vw;
@@ -257,12 +256,6 @@ article.span>.pic {
     height: 100%;
 }
 
-/* article.span > .pic > img{
-    display: block;
-    max-height: 100%;
-    width: auto;
-} */
-
 article.span>.pic>.alcohol {
     top: 300px;
 }
@@ -361,6 +354,9 @@ article.span>.right>.description {
     display: block;
 }
 
+#filters.visible {
+    display: flex;
+}
 .hidden{
     display: none;
 }

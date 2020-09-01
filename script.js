@@ -32,9 +32,43 @@ function open_menu() {
 //     })
 // })
 
+//getting list of the categories
+function init(){
+    fetch("https://kea-alt-del.dk/t5/api/categories")
+    .then(r => r.json()).then(
+        function(data){
+            categoriesRecieved(data)
+            console.log(data);
+        }
+    )
+}
+function categoriesRecieved(cats){
+    createNavigation(cats);
+    createSections(cats);
+}
 
-//fetch data
-fetch("https://kea-alt-del.dk/t5/api/productlist")
+function createNavigation(cats){
+    cats.forEach( cat =>{
+        const a = document.createElement("a");
+        a.textContent = cat;
+        a.setAttribute("href",`#${cat}`);
+        document.querySelector("#navig").appendChild(a);
+    })
+}
+
+function createSections(cats){
+    cats.forEach( cat=>{
+        const div = document.createElement("div");
+        div.setAttribute("id", cat);
+        const section = document.createElement("section");
+        section.classList.add(cat)
+        const h1 = document.createElement("h1");
+        h1.textContent = cat;
+        document.querySelector("main").appendChild(div);
+        div.appendChild(h1);
+        div.appendChild(section);
+    })
+    fetch("https://kea-alt-del.dk/t5/api/productlist")
     .then(function (response) {
         console.log("data was fetched");
         return response.json();
@@ -43,16 +77,17 @@ fetch("https://kea-alt-del.dk/t5/api/productlist")
         console.log(data)
         dataRecived(data)
     })
+}
+
+init()
+
+//fetch data
+
 
 //loop through products
 function dataRecived(meals) {
     meals.forEach(addMeal)
 }
-
-//show and hide filters
-document.querySelector("#showfilt").addEventListener("click", e=>{
-    document.querySelector("#filters").classList.toggle("showft");
-})
 
 function addMeal(meal) {
     //link and clone the template
@@ -89,60 +124,59 @@ function addMeal(meal) {
         clone.querySelector(".regular_price").textContent = meal.price + ",-";
         clone.querySelector(".price").textContent = discount + ",-";
     }
-
-    //setting filters
-
-    const veganfilter = document.querySelector("#vegeterian");
-    const dealfilter = document.querySelector("#deals");
-    const alcoholfilter = document.querySelector("#alcoholic");
-    const availablefilter = document.querySelector("#available");
-
-    veganfilter.addEventListener("click", e=>{
-        const articles = document.querySelectorAll("article:not(.vegeterian)")
-        veganfilter.classList.toggle("disabled");
-        articles.forEach(elem =>{
-            elem.classList.toggle("hidden");
-        })
-    })
-
-    dealfilter.addEventListener("click", e=>{
-        const articles = document.querySelectorAll("article:not(.deal)")
-        dealfilter.classList.toggle("disabled");
-        articles.forEach(elem =>{
-            elem.classList.toggle("hidden")
-        } )
-    })
-
-    alcoholfilter.addEventListener("click", e=>{
-        const articles = document.querySelectorAll("article.alcoholic")
-        alcoholfilter.classList.toggle("disabled");
-        articles.forEach(elem =>{
-            elem.classList.toggle("hidden")
-        } )
-    })
-
-    availablefilter.addEventListener("click", e=>{
-        const articles = document.querySelectorAll("article.notaviailable")
-        availablefilter.classList.toggle("disabled");
-        articles.forEach(elem =>{
-            elem.classList.toggle("hidden")
-        } )
-    })
-
-    //append the copy
-    if (meal.category == "starter"){
-        document.querySelector("section.starter").appendChild(clone);
-    }else if( meal.category == "main"){
-        document.querySelector("section.main").appendChild(clone);
-    }else if ( meal.category == "dessert"){
-        document.querySelector("section.dessert").appendChild(clone);
-    }else if ( meal.category == "drinks"){
-        document.querySelector("section.drink").appendChild(clone);
-    }else {
-        document.querySelector("section.side").appendChild(clone);
-    }
-    // document.querySelector("section").appendChild(clone);
+    
+    document.querySelector("section." + meal.category).appendChild(clone);
 }
+
+
+
+
+ //setting filters
+
+ const veganfilter = document.querySelector("#vegeterian");
+ const dealfilter = document.querySelector("#deals");
+ const alcoholfilter = document.querySelector("#alcoholic");
+ const availablefilter = document.querySelector("#available");
+
+ veganfilter.addEventListener("click", e=>{
+     const articles = document.querySelectorAll("article:not(.vegeterian)")
+     veganfilter.classList.toggle("disabled");
+     articles.forEach(elem =>{
+         elem.classList.toggle("hidden");
+     })
+ })
+
+ dealfilter.addEventListener("click", e=>{
+     const articles = document.querySelectorAll("article:not(.deal)")
+     dealfilter.classList.toggle("disabled");
+     articles.forEach(elem =>{
+         elem.classList.toggle("hidden")
+     } )
+ })
+
+ alcoholfilter.addEventListener("click", e=>{
+     const articles = document.querySelectorAll("article.alcoholic")
+     alcoholfilter.classList.toggle("disabled");
+     articles.forEach(elem =>{
+         elem.classList.toggle("hidden")
+     } )
+ })
+
+ availablefilter.addEventListener("click", e=>{
+     const articles = document.querySelectorAll("article.notaviailable")
+     availablefilter.classList.toggle("disabled");
+     articles.forEach(elem =>{
+         elem.classList.toggle("hidden")
+     } )
+ })
+
+//show and hide filters
+document.querySelector("#showfilt").addEventListener("click", e=>{
+    // document.querySelector("#showfilt").classList.toggle("opened");
+    document.querySelector("#filters").classList.toggle("visible");
+    // document.querySelector("#showfilt.opened").textContent = "Hide Filters";
+    // document.querySelector("#showfilt:not(opened)").textContent = "Open Filters";
+})
 
 
 
