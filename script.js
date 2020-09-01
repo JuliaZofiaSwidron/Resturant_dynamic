@@ -49,6 +49,11 @@ function dataRecived(meals) {
     meals.forEach(addMeal)
 }
 
+//show and hide filters
+document.querySelector("#showfilt").addEventListener("click", e=>{
+    document.querySelector("#filters").classList.toggle("showft");
+})
+
 function addMeal(meal) {
     //link and clone the template
     const template = document.querySelector("#meal").content;
@@ -59,27 +64,70 @@ function addMeal(meal) {
     clone.querySelector("h1").textContent = meal.name;
     clone.querySelector(".description").textContent = meal.shortdescription;
 
-    if (meal.vegetarian == true) {
+    if (meal.vegetarian) {
+        clone.querySelector("article").classList.add("vegeterian")
         clone.querySelector(".vegan").textContent = "Vegan";
     } else {
         clone.querySelector(".vegan").textContent = " ";
     }
 
-    if (meal.soldout == true) {
+    if (meal.soldout) {
+        clone.querySelector("article").classList.add("notaviailable")
         clone.querySelector(".sold").classList.add("visible");
     }
 
     if (meal.alcohol != 0) {
         clone.querySelector(".alcohol").classList.add("visible");
+        clone.querySelector("article").classList.add("alcoholic")
     }
 
     if (meal.discount == 0) {
         clone.querySelector(".price").textContent = meal.price + ",-";
     } else {
-        let discount = meal.price * meal.discount * 0.1;
-        clone.querySelector(".regular_price").textContent = discount + ",-";
-        clone.querySelector(".price").textContent = meal.price + ",-";
+        clone.querySelector("article").classList.add("deal")
+        let discount = meal.price - (meal.price * meal.discount * 0.01);
+        clone.querySelector(".regular_price").textContent = meal.price + ",-";
+        clone.querySelector(".price").textContent = discount + ",-";
     }
+
+    //setting filters
+
+    const veganfilter = document.querySelector("#vegeterian");
+    const dealfilter = document.querySelector("#deals");
+    const alcoholfilter = document.querySelector("#alcoholic");
+    const availablefilter = document.querySelector("#available");
+
+    veganfilter.addEventListener("click", e=>{
+        const articles = document.querySelectorAll("article:not(.vegeterian)")
+        veganfilter.classList.toggle("disabled");
+        articles.forEach(elem =>{
+            elem.classList.toggle("hidden");
+        })
+    })
+
+    dealfilter.addEventListener("click", e=>{
+        const articles = document.querySelectorAll("article:not(.deal)")
+        dealfilter.classList.toggle("disabled");
+        articles.forEach(elem =>{
+            elem.classList.toggle("hidden")
+        } )
+    })
+
+    alcoholfilter.addEventListener("click", e=>{
+        const articles = document.querySelectorAll("article.alcoholic")
+        alcoholfilter.classList.toggle("disabled");
+        articles.forEach(elem =>{
+            elem.classList.toggle("hidden")
+        } )
+    })
+
+    availablefilter.addEventListener("click", e=>{
+        const articles = document.querySelectorAll("article.notaviailable")
+        availablefilter.classList.toggle("disabled");
+        articles.forEach(elem =>{
+            elem.classList.toggle("hidden")
+        } )
+    })
 
     //append the copy
     if (meal.category == "starter"){

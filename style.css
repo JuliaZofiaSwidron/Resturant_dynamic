@@ -60,7 +60,7 @@ nav ol a {
     text-decoration: none;
     padding: 0 35px 0 35px;
     text-align: right;
-    font-size: 15px;
+    font-size: 1.25vw;
     font-weight: 300;
 }
 
@@ -74,20 +74,49 @@ nav ol {
     justify-content: flex-end;
     padding-right: 5vw;
 }
+.showft{
+    opacity: 100%;
+}
+#showfilt{
+    padding-top: 3vw;
+    text-align: right;
+    color:#333333;
+    font-size: 1.25vw;
+    text-decoration: underline;
+}
+#filters{
+    display:flex;
+    opacity: 0;
+    justify-content: flex-end;
+    width: 100%;
+}
+#filters >button{
+    width: 10vw;
+    font-size: 1.25vw;
+    padding: .2vw;
+    margin-left: 1vw;
+    border-radius: 5vw 5vw;
+    border: 3px solid #333333;
+}
+button.disabled{
+    color: #E5E3E3;
+    background-color: #333333;
+    border: none;
+}
 
 
 
 
 /*big layout*/
 main {
-    padding-top: 8vw;
+    /* padding-top: 8vw; */
     margin: auto;
     max-width: 90vw;
     text-align: center;
 }
-main > div {
-    margin-top: 6vw;
-} 
+#starter{
+    margin-top: 0;
+}
 main>h1 {
     color: #333333;
     font-weight: 500;
@@ -321,7 +350,17 @@ article.span>.right>.description {
 .span {
     grid-column: span 2;
 }
+@media only screen and (max-width:700px){
+    .span {
+        grid-row: span 2;
+        grid-column: span 1;
+    }
+}
 
 .visible {
     display: block;
+}
+
+.hidden{
+    display: none;
 }
