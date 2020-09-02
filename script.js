@@ -1,21 +1,21 @@
 const burger = document.querySelector(".burger");
 const navig = document.querySelector("#navig");
 const logo = document.querySelector(".logo")
-let menu_open = false;
+let menuOpen = false;
 
 //burger menu
 
 burger.addEventListener("click", open_menu);
 
 function open_menu() {
-    if (menu_open == false) {
+    if (!menuOpen) {
         navig.classList.add("open");
-        logo.classList.add("move");
-        menu_open = true;
+        logo.classList.add("hidden");
+        menuOpen = true;
     } else {
         navig.classList.remove("open");
-        logo.classList.remove("move");
-        menu_open = false;
+        logo.classList.remove("hidden");
+        menuOpen = false;
     }
 }
 
@@ -77,17 +77,18 @@ function createSections(cats){
         console.log(data)
         dataRecived(data)
     })
+    function dataRecived(meals) {
+        meals.forEach(addMeal)
+    }
 }
 
 init()
 
-//fetch data
+
 
 
 //loop through products
-function dataRecived(meals) {
-    meals.forEach(addMeal)
-}
+
 
 function addMeal(meal) {
     //link and clone the template
@@ -98,6 +99,7 @@ function addMeal(meal) {
     clone.querySelector("article").addEventListener("click", expandMeal);
     clone.querySelector("h1").textContent = meal.name;
     clone.querySelector(".description").textContent = meal.shortdescription;
+    clone.querySelector(".mealphoto").setAttribute("src",`https://kea-alt-del.dk/t5/site/imgs/medium/${meal.image}-md.jpg`);
 
     if (meal.vegetarian) {
         clone.querySelector("article").classList.add("vegeterian")
@@ -124,6 +126,7 @@ function addMeal(meal) {
         clone.querySelector(".regular_price").textContent = meal.price + ",-";
         clone.querySelector(".price").textContent = discount + ",-";
     }
+    
     
     document.querySelector("section." + meal.category).appendChild(clone);
 }
@@ -173,6 +176,7 @@ function addMeal(meal) {
 //show and hide filters
 document.querySelector("#showfilt").addEventListener("click", e=>{
     // document.querySelector("#showfilt").classList.toggle("opened");
+    document.querySelector("#showfilt").classList.toggle("visible");
     document.querySelector("#filters").classList.toggle("visible");
     // document.querySelector("#showfilt.opened").textContent = "Hide Filters";
     // document.querySelector("#showfilt:not(opened)").textContent = "Open Filters";
@@ -184,9 +188,27 @@ document.querySelector("#showfilt").addEventListener("click", e=>{
 function expandMeal() {
     // document.querySelector('article').classList.add("span");
     document.querySelectorAll('article').forEach(article => {
-        console.log("open this shit")
+        console.log("open article")
         article.addEventListener('click', e => {
             article.classList.toggle('span');
+            fetch(`https://kea-alt-del.dk/t5/api/product?id=${article.id}`).then(function (response){
+                return response.json();
+            }).then(function(data){
+                console.log(data.longdescription);
+                article.querySelector(".description").textContent = data.longdescription;
+            })
+           
         })
     })
+}
+
+function getLongdescrtiption(article){
+    fetch(`https://kea-alt-del.dk/t5/api/product?id=${article.id}`)
+        .then(function (response) {
+            console.log(article.id);
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(article.longdescription)
+        })       
 }

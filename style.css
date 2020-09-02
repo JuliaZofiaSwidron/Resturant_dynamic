@@ -28,6 +28,9 @@ p {
 /*header and navigation*/
 header {
     margin-right: 5vw;
+    width:100%;
+    position: fixed;
+    z-index: 4;
 }
 
 .logo {
@@ -35,35 +38,35 @@ header {
     height: 75px;
     border-radius: 50%;
     background-color: #333333;
-    position: fixed;
-    left: 47.5vw;
-    /* align-self: center; */
-    top: 0px;
-    z-index: 3;
+    position: relative;
+    left: 50%;
+    top: -20px;
+    z-index: 5;
 }
-
+.burger{
+display: none;
+}
 .logo>img {
-    position: fixed;
+    position: relative;
     height: 55px;
     width: auto;
     margin: 10px;
 }
 
-nav {
+#navig{
     display: flex;
     color: #E5E3E3;
     position: fixed;
     background-color: #333333;
     width: 100%;
-    height: 50px;
+    height: auto;
     top: 0;
-    z-index: 2;
+    z-index: 4;
     justify-content: flex-end;
-    align-items: center;
     padding-right: 4vw;
 }
 
-nav a {
+#navig a {
     text-decoration: none;
     color: #E5E3E3;
     padding: 1vw;
@@ -72,21 +75,20 @@ nav a {
     font-weight: 300;
 }
 
-a:hover {
+#navig a:hover {
     text-decoration: underline;
 }
 
 #showfilt{
-    padding-top: 3vw;
-    text-align: right;
-    color:#333333;
-    font-size: 1vw;
-    text-decoration: underline;
-    cursor: pointer;
+   flex: start;
+   margin-right: auto;
 }
 #filters{
     display:none;
-    justify-content: flex-end;
+    position: absolute;
+    top: 2vw;
+    padding-top: 1vw;
+    /* justify-content: flex-end; */
     width: 100%;
 }
 #filters >button{
@@ -108,17 +110,9 @@ button.disabled{
 
 /*big layout*/
 main {
-    /* padding-top: 8vw; */
-    margin: auto;
+    margin:auto ;
     max-width: 90vw;
     text-align: center;
-}
-#starter{
-    margin-top: 0;
-}
-main>h1 {
-    color: #333333;
-    font-weight: 500;
 }
 
 section {
@@ -127,6 +121,8 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     align-items: space-around;
 }
+
+
 
 
 
@@ -152,6 +148,11 @@ article {
     border-radius: 6px 6px 0 0;
     overflow: hidden;
     position: relative;
+}
+.mealphoto{
+    height: 100%;
+    width: auto;
+    overflow: hidden;
 }
 
 .sold {
@@ -283,26 +284,6 @@ article.span>.right>.description {
         margin-top: 4vw;
     }
 
-    nav {
-        z-index: 1;
-        display: none;
-
-    }
-
-    nav ol {
-        display: block;
-        padding-bottom: 30px;
-    }
-
-    nav ol li {
-        text-align: center;
-    }
-
-    header>div {
-        left: 43vw;
-        /* top: 75px; */
-    }
-
     .burg {
         background-color: #333333;
         position: fixed;
@@ -314,13 +295,13 @@ article.span>.right>.description {
     }
 
     .burger {
+        display: block;
         width: 100%;
         position: fixed;
         left: 30px;
         top: 10px;
         z-index: 4;
     }
-
     .burger div {
         width: 30px;
         height: 2px;
@@ -328,34 +309,60 @@ article.span>.right>.description {
         border-radius: 5px;
         margin: 5px
     }
+    #navig {
+        z-index: 4;
+        position: absolute;
+        top: 0;
+        display: none;
+        background-color:#333333;
+    }
+    #navig a {
+        display: block;
+        text-align: center;
+        font-size: 15px;
+    }
+    .logo{
+        left: 43%;
+    }
 }
-
+@media only screen and (max-width: 650px){
+    article.span {
+        width: 300px;
+    height: auto;
+    grid-column: span 2;
+    display: block;
+    }
+}
+}
 
 
 
 /*Animations*/
 
 .move {
-    top: 75px;
-    animation: ease-in-out 1s;
 }
 
 .span {
     grid-column: span 2;
+    max-width: 600px;
+    /* transform-origin: left; */
 }
-@media only screen and (max-width:700px){
+/* @media only screen and (max-width:700px){
     .span {
         grid-row: span 2;
         grid-column: span 1;
     }
+} */
+.open{
+    display: block;
 }
-
 .visible {
     display: block;
 }
-
 #filters.visible {
     display: flex;
+    background-color: #E5E3E3;
+    padding-bottom: 1vw;;
 }
 .hidden{
     display: none;
