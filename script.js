@@ -96,7 +96,10 @@ function addMeal(meal) {
     const clone = template.cloneNode(true);
 
     //populate the copy
-    clone.querySelector("article").addEventListener("click", expandMeal);
+    clone.querySelector('article').dataset.id=meal.id
+    clone.querySelector("article").addEventListener("click", function(){
+        expandMeal(meal)
+    });
     clone.querySelector("h1").textContent = meal.name;
     clone.querySelector(".description").textContent = meal.shortdescription;
     clone.querySelector(".mealphoto").setAttribute("src",`https://kea-alt-del.dk/t5/site/imgs/medium/${meal.image}-md.jpg`);
@@ -185,9 +188,36 @@ document.querySelector("#showfilt").addEventListener("click", e=>{
 
 
 // this works
-function expandMeal() {
+function expandMeal(meal) {
+    //find the right artilce
+    const article = document.querySelector(`article[data-id="${meal.id}"]`)
+    //fethch data
+    article.classList.toggle('span');
+    console.log(article.classList.contains('span'))
+    if(article.classList.contains('span')){
+        fetch(`https://kea-alt-del.dk/t5/api/product?id=${meal.id}`).then(function (response){
+        return response.json();
+    }).then(function(data){
+        console.log(data.longdescription);
+        article.querySelector(".description").textContent = data.longdescription;
+        if (data.allergens.length != 0){
+            article.querySelector(".alergens").textContent = "Alergens: " + data.allergens;
+        }else{
+            article.querySelector(".alergens").textContent = " ";
+        }
+        
+    })
+    } else {
+        article.querySelector(".description").textContent = meal.shortdescription;
+    }
+    
+    
+
+    //set descript
+
+    //toggle some classes
     // document.querySelector('article').classList.add("span");
-    document.querySelectorAll('article').forEach(article => {
+    /*document.querySelectorAll('article').forEach(article => {
         console.log("open article")
         article.addEventListener('click', e => {
             article.classList.toggle('span');
@@ -199,7 +229,7 @@ function expandMeal() {
             })
            
         })
-    })
+    })*/
 }
 
 function getLongdescrtiption(article){
