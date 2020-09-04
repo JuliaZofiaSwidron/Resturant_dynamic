@@ -12,25 +12,14 @@ function open_menu() {
         navig.classList.add("open");
         logo.classList.add("hidden");
         menuOpen = true;
+        
     } else {
         navig.classList.remove("open");
         logo.classList.remove("hidden");
+        document.querySelector("#filters").classList.remove("visible");
         menuOpen = false;
     }
 }
-
-// document.querySelector("article").addEventListener("click", expandMeal);
-// function expandMeal(){
-
-// }
-
-//opening and closing the meal detailed description
-// document.querySelectorAll('article').forEach(article=>{
-//     console.log("open this shit")
-//     article.addEventListener('click', e=>{
-//         article.classList.toggle('span'); 
-//     })
-// })
 
 //getting list of the categories
 function init(){
@@ -178,11 +167,8 @@ function addMeal(meal) {
 
 //show and hide filters
 document.querySelector("#showfilt").addEventListener("click", e=>{
-    // document.querySelector("#showfilt").classList.toggle("opened");
     document.querySelector("#showfilt").classList.toggle("visible");
     document.querySelector("#filters").classList.toggle("visible");
-    // document.querySelector("#showfilt.opened").textContent = "Hide Filters";
-    // document.querySelector("#showfilt:not(opened)").textContent = "Open Filters";
 })
 
 
@@ -211,26 +197,6 @@ function expandMeal(meal) {
         article.querySelector(".description").textContent = meal.shortdescription;
     }
     
-    
-
-    //set descript
-
-    //toggle some classes
-    // document.querySelector('article').classList.add("span");
-    /*document.querySelectorAll('article').forEach(article => {
-        console.log("open article")
-        article.addEventListener('click', e => {
-            article.classList.toggle('span');
-            fetch(`https://kea-alt-del.dk/t5/api/product?id=${article.id}`).then(function (response){
-                return response.json();
-            }).then(function(data){
-                console.log(data.longdescription);
-                article.querySelector(".description").textContent = data.longdescription;
-            })
-           
-        })
-    })*/
-}
 
 function getLongdescrtiption(article){
     fetch(`https://kea-alt-del.dk/t5/api/product?id=${article.id}`)
@@ -241,4 +207,10 @@ function getLongdescrtiption(article){
         .then(function (data) {
             console.log(article.longdescription)
         })       
-}
+}}
+
+//closing navigation after you clicked on a link//
+document.querySelectorAll("#navig a").addEventListener("click", e=>{
+    menuOpen = true;
+    open_menu()
+}) 
